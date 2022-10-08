@@ -55,7 +55,7 @@ fun HTML.articlePage(
         if (pageInfo != null) {
             content = pager(content)[pageInfo.cur - 1]
         }
-        main("content") { unsafe { +content.replace("\n", "<br>") } }
+        div("content") { unsafe { +content.replace("\n", "<br>") } }
         div("page-footer") {
             pageInfoToHTML(pageInfo)
             br()
