@@ -1,4 +1,4 @@
-package web.template
+﻿package web.template
 
 import kotlinx.html.*
 import lightnovelApi.model.response.ArticleResponse
@@ -8,9 +8,9 @@ import web.pager
 import web.toSimple
 import java.net.URLEncoder
 import java.nio.charset.Charset
-import java.time.LocalTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 fun HTML.articlePage(
     detail: ArticleResponse,
@@ -26,7 +26,8 @@ fun HTML.articlePage(
             }
         }
         div("time") {
-            +"时间：${LocalTime.now().format(DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT))}"
+            val zone = ZoneId.of("Asia/Shanghai")
+            +"时间：${DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(ZonedDateTime.now(zone))}"
         }
         div("page-header") {
             pageInfo?.let {
@@ -55,7 +56,7 @@ fun HTML.articlePage(
         if (pageInfo != null) {
             content = pager(content)[pageInfo.cur - 1]
         }
-        main("content") { unsafe { +content.replace("\n", "<br>") } }
+        div("content") { unsafe { +content.replace("\n", "<br>") } }
         div("page-footer") {
             pageInfoToHTML(pageInfo)
             br()
