@@ -15,7 +15,7 @@ import lightnovelApi.model.response.Response
 object CategoryAPI: BasicApi() {
     suspend fun getArticleCates(depth: Int, cache: Boolean, security_key: String=""): List<ArticleCates> {
         val apiPath = "/api/category/get-article-cates"
-        val response: Response<List<ArticleCates>> = client.post {
+        val response: Response<List<ArticleCates>> = post {
             url.path(apiPath)
             setBody(
                 Request(d = ArticleCatesRequest(depth, cache, security_key))
@@ -26,7 +26,7 @@ object CategoryAPI: BasicApi() {
 
     suspend fun getCategories(parent_gid: Int, security_key: String=""): List<Categories> {
         val apiPath = "/api/category/get-categories"
-        val response: Response<List<Categories>> = client.post {
+        val response: Response<List<Categories>> = post {
             url.path(apiPath)
             setBody(
                 Request(d = CategoriesRequest(parent_gid, security_key))
@@ -37,7 +37,7 @@ object CategoryAPI: BasicApi() {
 
     suspend fun getArticleByCate(parent_gid: Int, gid: Int, page: Int, pageSize: Int? = null, security_key: String=""): ArticleByCateResponse {
         val apiPath = "/api/category/get-article-by-cate"
-        val response: Response<ArticleByCateResponse> = client.post {
+        val response: Response<ArticleByCateResponse> = post {
             url.path(apiPath)
             setBody(
                 Request(d = ArticleByCateRequest(parent_gid, gid, page, pageSize, security_key))

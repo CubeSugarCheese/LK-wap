@@ -11,7 +11,7 @@ import lightnovelApi.model.response.Response
 object ArticleAPI : BasicApi() {
     suspend fun getDetail(aid: Int, security_key: String = ""): ArticleResponse {
         val apiPath = "/api/article/get-detail"
-        val response: Response<ArticleResponse> = client.post {
+        val response: Response<ArticleResponse> = post {
             url.path(apiPath)
             setBody(
                 Request(d = ArticleRequest(aid = aid, security_key = security_key))

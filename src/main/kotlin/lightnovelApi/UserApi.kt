@@ -11,7 +11,7 @@ import lightnovelApi.model.response.Response
 object UserApi : BasicApi() {
     suspend fun login(username: String, password: String): LoginResponse {
         val apiPath = "/api/user/login"
-        val response: Response<LoginResponse>  = client.post {
+        val response: Response<LoginResponse>  = post {
             url.path(apiPath)
             setBody(
                 Request(d = LoginRequest(username, password))
