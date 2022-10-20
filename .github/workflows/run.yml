@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           chmod +x gradlew
-          ./gradlew build
+          ./gradlew build -x test
 
       - name: Generate checksum files
         shell: bash
