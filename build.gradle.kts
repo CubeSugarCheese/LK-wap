@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "me.daniel"
-version = "1.0-SNAPSHOT"
+version = "0.0.1"
 
 repositories {
     mavenCentral()
@@ -39,14 +39,10 @@ dependencies {
     // ktorm
     implementation("org.ktorm:ktorm-core:$ktorm_version")
     implementation("org.ktorm:ktorm-support-sqlite:$ktorm_version")
-    // Gson
-    implementation("com.google.code.gson:gson:$gson_version")
     // 杂项
     implementation("com.github.houbb:opencc4j:1.7.2")
     implementation("org.jsoup:jsoup:1.15.3")
     implementation("me.tongfei:progressbar:0.9.4")
-    implementation("com.akuleshov7:ktoml-core:0.2.13")
-    implementation("com.akuleshov7:ktoml-file:0.2.13")
 }
 
 tasks.test {
