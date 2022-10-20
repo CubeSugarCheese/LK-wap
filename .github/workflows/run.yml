@@ -24,8 +24,8 @@ jobs:
           distribution: "temurin"
 
       - name: Build with Gradle
-        with:
-          arguments: ./gradlew build
+        shell: bash
+        run: ./gradlew build
 
       - name: Generate checksum files
         shell: bash
