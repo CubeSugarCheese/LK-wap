@@ -25,7 +25,9 @@ jobs:
 
       - name: Build with Gradle
         shell: bash
-        run: ./gradlew build
+        run: |
+          chmod +x gradlew
+          ./gradlew build
 
       - name: Generate checksum files
         shell: bash
