@@ -29,17 +29,8 @@ jobs:
           chmod +x gradlew
           ./gradlew build -x test
 
-      - name: Generate checksum files
-        shell: bash
-        run: |
-          md5sum build/libs/LK-wap-0.0.1-all.jar > LK-wap-0.0.1-all.jar.md5
-          sha1sum build/libs/LK-wap-0.0.1-all.jar > LK-wap-0.0.1-all.jar.sha1
-
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
           name: "LK-wap"
-          path: |
-            build/libs/LK-wap-0.0.1-all.jar
-            LK-wap-0.0.1-all.jar.md5
-            LK-wap-0.0.1-all.jar.sha1
+          path: build/libs/*-all.jar
