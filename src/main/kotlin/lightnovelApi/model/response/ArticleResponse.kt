@@ -1,6 +1,7 @@
 package lightnovelApi.model.response
 
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonElement
 import lightnovelApi.model.common.*
 
 @Serializable
@@ -11,7 +12,11 @@ data class ArticleResponse(
     val already_follow: Int = 0,
     val already_like: Int = 0,
     val author: Author,
-    val balance: List<Balance> = listOf(),
+    /**
+     * type is lightnovelApi.model.common.Balance before buy
+     * type is List<Unit> after buy
+     * */
+    val balance: JsonElement?,
     val banner: String,
     val cache_ver: Int,
     val coins: Int,
